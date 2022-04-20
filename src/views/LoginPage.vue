@@ -32,9 +32,9 @@ export default {
     console.log("mounted");
     //this.$store.state.loggedInUser
     console.log("this.$store: ", this.$store.state.userLoggedIn.user);
-    this.$store.state.userLoggedIn.user
+    this.$store.state.userLoggedIn.loggedIn
       ? router.replace({ path: "/home" })
-      : "";
+      : router.replace({ path: "/" });
   },
 };
 </script>

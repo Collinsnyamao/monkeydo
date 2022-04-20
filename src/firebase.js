@@ -2,7 +2,8 @@ import { ref, onUnmounted } from 'vue';
 import { Store } from 'vuex';
 import store from './store/index'
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import router from './router';
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -57,6 +58,15 @@ export function logInExistingUser(email, password) {
         });
 }
 
+export function logOutUser() {
+    signOut(auth).then(() => {
+        // Sign-out successful.
+        router.replace({ path: "/" })
+    }).catch((error) => {
+        // An error happened.
+    });
+}
+
 onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in, see docs for a list of available properties
@@ -67,9 +77,13 @@ onAuthStateChanged(auth, (user) => {
 
         store.commit('setLoggedInState', user);
         console.log('user: ', user);
+        router.replace({ path: "/home" })
     } else {
         // User is signed out
         // ...
+        console.log('no user');
         store.commit('setLoggedInState', false, {});
+        router.replace({ path: "/" })
+        //router.go('login')
     }
 });
