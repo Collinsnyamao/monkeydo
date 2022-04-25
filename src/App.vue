@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import { feather } from "feather-icons";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
 
@@ -34,7 +33,7 @@ export default {
     },
   },
   mounted() {
-    feather.replace();
+    //feather.replace();
   },
 };
 </script>

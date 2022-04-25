@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './index.css'
-import VueFeatherIcon from 'vue-feather-icon'
+import VueFeather from 'vue-feather'
 
-createApp(App).use(store).use(router).use(VueFeatherIcon).mount('#app')
+
+createApp(App).use(store).use(router).component(VueFeather.name, VueFeather).mount('#app')

@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginPage from '../views/LoginPage.vue'
+import MpesaPage from '../views/MpesaPage.vue'
+import BankStatementsPage from '../views/BankStatementsPage.vue'
+import InventoryPage from '../views/InventoryPage.vue'
+import UploadPage from '../views/UploadPage.vue'
 
 const routes = [
   {
@@ -12,6 +16,26 @@ const routes = [
     path: '/',
     name: 'login',
     component: LoginPage
+  },
+  {
+    path: '/bankstatements',
+    name: 'bankstatements',
+    component: BankStatementsPage
+  },
+  {
+    path: '/mpesa',
+    name: 'mpesa',
+    component: MpesaPage
+  },
+  {
+    path: '/inventory',
+    name: 'Inventory',
+    component: InventoryPage
+  },
+  {
+    path: '/upload',
+    name: 'UploadPage',
+    component: UploadPage
   },
   {
     path: '/about',
