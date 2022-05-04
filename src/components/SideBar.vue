@@ -187,8 +187,10 @@
 
 <script>
 import { feather } from "feather-icons";
-import { logOutUser } from "../firebase";
 import router from "../router";
+import { signOut } from "firebase/auth";
+import { auth } from "../main";
+
 export default {
   name: "SideBar",
   components: {},
@@ -239,7 +241,14 @@ export default {
   methods: {
     logOut() {
       //router.push("/");
-      logOutUser();
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+          router.replace({ path: "/" });
+        })
+        .catch((error) => {
+          // An error happened.
+        });
     },
     switchActive(key, index) {
       console.log("key, index: ", key, index);

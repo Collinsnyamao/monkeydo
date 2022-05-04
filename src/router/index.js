@@ -5,6 +5,7 @@ import MpesaPage from '../views/MpesaPage.vue'
 import BankStatementsPage from '../views/BankStatementsPage.vue'
 import InventoryPage from '../views/InventoryPage.vue'
 import UploadPage from '../views/UploadPage.vue'
+import RegisterPage from '../views/RegisterPage.vue'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/upload',
     name: 'UploadPage',
     component: UploadPage
+  },
+  {
+    path: '/register',
+    name: 'RegisterPage',
+    component: RegisterPage
   },
   {
     path: '/about',

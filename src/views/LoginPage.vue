@@ -9,7 +9,11 @@
 <script>
 import router from "@/router";
 import LoginForm from "../components/LoginForm";
-import { logInExistingUser } from "../firebase";
+import { initializeApp } from "firebase/app";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../main";
+//const auth = getAuth();
+
 export default {
   name: "LoginPage",
   components: {
@@ -18,8 +22,24 @@ export default {
   methods: {
     logIn(e) {
       console.log("e: ", e);
-      logInExistingUser(e.email, e.password);
-      console.log(logInExistingUser(e.email, e.password));
+      let email = e.email;
+      let password = e.password;
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log("user: ", user);
+          return user;
+          // ...
+        })
+        .catch((error) => {
+          console.log("error: ", error);
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          return error;
+        });
+      //logInExistingUser(e.email, e.password);
+      //console.log(logInExistingUser(e.email, e.password));
     },
     referLoggedInUser() {
       console.log("referring: ");
