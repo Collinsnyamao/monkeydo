@@ -208,7 +208,7 @@ export default {
           active: true,
         },
         {
-          name: "Bank statements",
+          name: "Bank Statements",
           route: "/bankstatements",
           icon: "credit-card",
           id: 2,
