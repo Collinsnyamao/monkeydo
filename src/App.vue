@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="sidebarAllowed" class="h-screen mr-0 mx-0 flex">
+    <div v-if="$store.state.sidebarAllowed" class="h-screen mr-0 mx-0 flex">
       <div class="box-border flex-initial bg-gray-50 h-screen w-1/5 p-2">
         <SideBar />
       </div>
@@ -8,7 +8,7 @@
         <router-view />
       </div>
     </div>
-    <div v-if="!sidebarAllowed" class="h-screen mr-0">
+    <div v-if="!$store.state.sidebarAllowed" class="h-screen mr-0">
       <router-view />
     </div>
   </div>
@@ -17,6 +17,7 @@
 <script>
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
+import store from "./store/index";
 
 export default {
   components: {
@@ -44,10 +45,13 @@ export default {
       console.log("this.$route.name: ", this.$route.name);
       let currentRouteName = this.$route.path;
       console.log("currentRouteName: ", currentRouteName);
-      this.sidebarAllowed =
-        currentRouteName === "/" || currentRouteName === "/register"
-          ? false
-          : true;
+      if (currentRouteName === "/" || currentRouteName === "/register") {
+        console.log("match path");
+        this.$store.commit("disallowSideBar");
+      } else {
+        console.log("mismatch");
+        this.$store.commit("allowSidebar");
+      }
       console.log("sidebarAllowed: ", this.sidebarAllowed);
       return this.$route.name;
     },

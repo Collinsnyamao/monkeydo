@@ -3,6 +3,7 @@ import router from '@/router';
 
 export default createStore({
   state: {
+    sidebarAllowed: false,
     userLoggedIn: {
       loggedIn: false,
       user: {}
@@ -21,6 +22,12 @@ export default createStore({
         state.userLoggedIn.loggedIn = false;
         state.userLoggedIn.user = {};
       }
+    },
+    allowSidebar(state) {
+      state.sidebarAllowed = true;
+    },
+    disallowSideBar(state) {
+      state.sidebarAllowed = false;
     }
   },
   actions: {

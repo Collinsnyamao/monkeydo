@@ -47,9 +47,24 @@ export default {
         router.go("home");
       }, 100);
     },
+    currentRouteName() {
+      console.log("this.$route.name: ", this.$route.name);
+      let currentRouteName = this.$route.path;
+      console.log("currentRouteName: ", currentRouteName);
+      if (currentRouteName === "/" || currentRouteName === "/register") {
+        console.log("match path");
+        this.$store.commit("disallowSideBar");
+      } else {
+        console.log("mismatch");
+        this.$store.commit("allowSidebar");
+      }
+      console.log("sidebarAllowed: ", this.sidebarAllowed);
+      return this.$route.name;
+    },
   },
   mounted() {
     console.log("mounted");
+    this.currentRouteName();
     //this.$store.state.loggedInUser
     console.log("this.$store: ", this.$store.state.userLoggedIn.user);
     this.$store.state.userLoggedIn.loggedIn
