@@ -83,6 +83,7 @@
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
                   <a
+                    @click="logOut"
                     href="#"
                     :class="[
                       active ? 'bg-gray-100' : '',
@@ -130,6 +131,8 @@ import {
   MenuItems,
 } from "@headlessui/vue";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
+import { signOut } from "firebase/auth";
+import { auth } from "../main";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
@@ -151,6 +154,19 @@ export default {
     BellIcon,
     MenuIcon,
     XIcon,
+  },
+  methods: {
+    logOut() {
+      //router.push("/");
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+          router.replace({ path: "/" });
+        })
+        .catch((error) => {
+          // An error happened.
+        });
+    },
   },
   setup() {
     return {
