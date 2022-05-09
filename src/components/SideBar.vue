@@ -19,6 +19,7 @@
           v-for="(page, key, index) in pages"
           :key="key"
           @click="switchActive(key, index)"
+          class="bg-blue"
         >
           <router-link
             :to="page.route"
@@ -29,29 +30,22 @@
               p-2
               text-base
               font-normal
-              !active:text-gray-900
               rounded-lg
               dark:text-white
-              hover:bg-gray-100
-              dark:hover:bg-gray-700
-              active:bg-gray-700
+              hover:text-emerald-300
             "
           >
-            <vue-feather
-              class="
-                flex-shrink-0
-                w-6
-                h-6
-                text-gray-500
-                transition
-                duration-75
-                dark:text-gray-400
-                group-hover:text-gray-900
-                dark:group-hover:text-white
-              "
-              :type="page.icon"
-            ></vue-feather>
-            <span class="ml-3">{{ page.name }}</span>
+            <button
+              class="text-xs uppercase py-3 font-bold block"
+              :class="[
+                page.active
+                  ? 'text-emerald-500 hover:text-emerald-600'
+                  : 'text-blueGray-700 hover:text-blueGray-500',
+              ]"
+            >
+              <i :class="'fa-solid fas fa-' + page.icon"></i>
+              <span class="ml-3">{{ page.name }}</span>
+            </button>
           </router-link>
         </li>
         <!-- <li>
@@ -203,35 +197,35 @@ export default {
         {
           name: "Dashboard",
           route: "/home",
-          icon: "home",
+          icon: "house-user",
           id: 1,
           active: true,
         },
         {
           name: "Bank Statements",
           route: "/bankstatements",
-          icon: "credit-card",
+          icon: "building-columns",
           id: 2,
           active: false,
         },
         {
           name: "M-PESA",
           route: "/mpesa",
-          icon: "tablet",
+          icon: "money-bill-transfer",
           id: 3,
           active: false,
         },
         {
           name: "Inventory",
           route: "/inventory",
-          icon: "save",
+          icon: "cart-flatbed",
           id: 4,
           active: false,
         },
         {
           name: "Upload",
           route: "/upload",
-          icon: "upload-cloud",
+          icon: "cloud-arrow-up",
           id: 5,
           active: false,
         },

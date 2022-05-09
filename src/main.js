@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import './index.css'
 import VueFeather from 'vue-feather'
+import '@fortawesome/fontawesome-free/js/all.js';
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 

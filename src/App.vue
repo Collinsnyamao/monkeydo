@@ -1,10 +1,10 @@
 <template>
   <div>
     <div v-if="$store.state.sidebarAllowed" class="h-screen mr-0 mx-0 flex">
-      <div class="box-border flex-initial bg-gray-50 h-screen w-1/5 p-2">
+      <div class="box-border flex-initial bg-gray-50 h-screen w-1/6 p-2">
         <SideBar />
       </div>
-      <div class="box-border h-screen w-4/5 p-4 bg-gray-200">
+      <div class="box-border h-screen w-5/6 p-4 bg-gray-200">
         <router-view />
       </div>
     </div>
